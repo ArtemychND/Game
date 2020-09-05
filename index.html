@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="healthbar">
+      <div class="user">
+        <h1>YOU</h1>
+        <div :class="userHealth" :style="userHealth"><span>{{parseInt(userHealth.width) / 2}}%</span></div>
+      </div>
+      <div class="monster">
+        <h1>MONSTER</h1>
+        <div :class="monsterHealth" :style="monsterHealth"><span>{{parseInt(monsterHealth.width) / 2}}%</span></div>
+      </div>
+    </div>
+    <div class="start-game" v-show="!isStarted">
+      <button @click="isStarted = !isStarted">START GAME</button>
+    </div>
+    <div class="game-buttons" :class="{end: endOfGame}" v-show="isStarted">
+      <button @mousedown="attack">ATTACK</button>
+      <button>SPECIAL ATTACK</button>
+      <button @click="hial">HIAL</button>
+      <button @click="giveUp">GIVE UP</button>
+    </div>
+    <ul>
+      <li v-for="el in arrOfHit">{{el}}</li>
+    </ul>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
+
